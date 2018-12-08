@@ -1,5 +1,30 @@
 # SSH Essentials
 
+<!--ts-->
+   * [SSH Essentials](#ssh-essentials)
+      * [Overview](#overview)
+      * [Authentication](#authentication)
+         * [How SSH works](#how-ssh-works)
+         * [Generating SSH keys](#generating-ssh-keys)
+      * [Copying your Public SSH Key to a Server](#copying-your-public-ssh-key-to-a-server)
+         * [1. Using scp](#1-using-scp)
+         * [2. Using ssh-copy-id](#2-using-ssh-copy-id)
+      * [Security](#security)
+         * [Disable password authentication](#disable-password-authentication)
+         * [Changing the port that SSH Daemon runs on](#changing-the-port-that-ssh-daemon-runs-on)
+         * [Limit number of users who can connect through SSH](#limit-number-of-users-who-can-connect-through-ssh)
+         * [Disable Root login](#disable-root-login)
+         * [Allow Root access for specific commands](#allow-root-access-for-specific-commands)
+         * [Allowing GUI](#allowing-gui)
+      * [Client-Side configuration options](#client-side-configuration-options)
+         * [Defining Server-Specific Connection Information](#defining-server-specific-connection-information)
+         * [Disabling Host Checking](#disabling-host-checking)
+   * [References](#references)
+
+<!-- Added by: crysis, at: 2018-12-08T23:55+05:30 -->
+
+<!--te-->
+
 ## Overview
 
 - For the duration of your SSH session, any commands that you type into your local terminal are **sent through an encrypted SSH tunnel** and executed on your server.
@@ -69,7 +94,7 @@ Avoid all the above hussle with one command.
 ssh-copy-id root@192.168.1.3
 ```
 
-## Secutity
+## Security
 
 ### Disable password authentication
 
@@ -150,7 +175,7 @@ sudo vim /etc/ssh/sshd_config
 ```
 Find the directive `PermitRootLogin`, and change the value to `forced-commands-only`.
 
-```vim
+```vimhttps://github.com/w4rb0y
 PermitRootLogin forced-commands-only
 ```
 
@@ -225,4 +250,4 @@ Host *
 # References
 
 Source of these notes: [SSH Essentials](https://www.digitalocean.com/community/tutorials/ssh-essentials-working-with-ssh-servers-clients-and-keys)  
-[sshd config file](https://www.ssh.com/ssh/config/)
+[sshd config file manual](https://www.ssh.com/ssh/config/)
